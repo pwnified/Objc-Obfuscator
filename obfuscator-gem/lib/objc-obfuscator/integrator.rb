@@ -18,15 +18,18 @@ module Objc_Obfuscator
       phase_obf.name = "Obfuscate strings"
       phase_obf.shell_path = '/bin/bash'
       phase_obf.shell_script = <<-SCRIPT
+      encryption_key=234ba9c824cd578ef924a5f0
+        
       if [ -f "$HOME/.rvm/scripts/rvm" ];
       then
         source $HOME/.rvm/scripts/rvm
         rvm rvmrc trust
         rvm rvmrc load
       fi
-      for file in `grep -rl __obfuscate ${SRCROOT}/*.h`; do; objc-obfuscator obfuscate #{encryption_key}; done"
-      for file in `grep -rl __obfuscate ${SRCROOT}/*.m`; do; objc-obfuscator obfuscate #{encryption_key}; done"
-
+      for file in `grep -rl __obfuscated ${SRCROOT} --include=*.h --include=*.m`; do
+        objc-obfuscator obfuscate ${encryption_key} $file;
+      done
+        
       SCRIPT
 
       phase_unobf = project.new('PBXShellScriptBuildPhase')

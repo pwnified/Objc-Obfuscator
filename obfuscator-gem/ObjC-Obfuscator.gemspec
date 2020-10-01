@@ -2,13 +2,13 @@ Gem::Specification.new do |s|
   s.name        = 'objc-obfuscator'
   s.version     = '0.2.8'
   s.date        = '2015-01-19'
-  s.summary     = "A simple obfuscator that encrypts strings in source files"
+  s.summary     = "A simple obfuscator"
   s.description = "A simple obfuscator that encrypts strings in source files"
   s.authors     = ["Fabio Gallonetto"]
   s.email       = 'fabio@futureworkshops.com'
   s.files       = ["lib/obfuscator.rb"]
   s.homepage    = 'http://github.com/FutureWorkshops/Obfuscator-ruby'
-  s.license     = 'BSD'
+  s.license     = '0BSD'
 
   s.files       = `git ls-files -- {bin,lib}/*`.split("\n")
 
